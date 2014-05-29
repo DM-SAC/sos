@@ -1,0 +1,59 @@
+<legend>Detalle Policía</legend>
+
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->policia->idUser ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->policia->Code?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->policia->Name?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->policia->LastName?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE DE USUARIO</th>
+		<td><?= $this->policia->User?></td>
+	</tr>
+	<tr>
+		<th scope="row">EMAIL</th>
+		<td><?= $this->policia->Email?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE REGISTRO</th>
+		<td><?= $this->policia->RegistrationDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE MODIFICACIÓN</th>
+		<td><?= $this->policia->UpdateDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">ESTADO</th>
+		<td><?=$this->policia->State?'ACTIVO':'INACTIVO'?></td>
+	</tr>
+	<tr>
+		<th scope="row">CENTRAL</th>
+		<td><?=$this->policia->UserType?></td>
+	</tr>	
+	<tr>
+		<th scope="row">ROL</th>
+		<td><?= $this->policia->Role?> - <?= $this->policia->DetailRole?></td>
+	</tr>
+	<tr>
+		<th scope="row">DEPARTAMENTO / PROVINCIA / DISTRITO</th>
+		<td><?= $this->policia->Department?>-<?= $this->policia->Province?>-<?= $this->policia->District?></td>
+	</tr>
+</table>
+
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>policia/editar/<?= $this->policia->idUser ?>">EDITAR</a>
+<br>
+<br>

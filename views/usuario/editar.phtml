@@ -1,0 +1,85 @@
+<form id="unidad" class="form-horizontal" id='client-form' action='<?= BASE_URL; ?>usuario/grabarUsuario/<?= $this->usuario->idUserType?>' method='post' enctype="multipart/form-data">
+  <fieldset>
+  <legend>Editar <?= $this->usuario->UserType?> </legend>
+  	<div class="control-group">
+    	<label class="control-label" for="inputID">ID USUARIO</label>
+  		<div class="controls">
+    	 <input type="text" class="input-small"  id="inputID" name='ID' value ='<?= $this->usuario->idUser ?>' readonly>
+  		</div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputNOMBRE">NOMBRE *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputNOMBRE" name='NOMBRE' value='<?= $this->usuario->Name?>'required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputAPELLIDOS">APELLIDOS *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputAPELLIDOS" name='APELLIDOS' value='<?= $this->usuario->LastName?>' required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputEMAIL">EMAIL *</label>
+      <div class="controls">
+        <input type="email" class="input-large"  id="inputEMAIL" name='EMAIL' value='<?= $this->usuario->Email?>'required>
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label" for="inputROL">ROL</label>
+      <div class="controls">
+        <select name="ROL">
+          <option value='<?= $this->usuario->idRole?>'><?= $this->usuario->DetailRole?></option>
+          <option value="2">Administrador</option>
+          <option value="3">Supervisor</option>s
+        </select>
+      </div>
+    </div> 
+     <div class="control-group">
+      <label class="control-label" for="inputUBICACION">UBICACION</label>
+      <br>
+      <div class="controls">
+        <div>
+        <p>Departamento:</p>
+          <select name='DEPARTAMENTO' id='departamento' readonly>
+            <option selected value="15">Lima</option>
+            
+          </select>
+        </div>
+        <div>
+        <p>Provincia:</p>
+          <select name='PROVINCIA' id='provincia' readonly> 
+          <option selected value="01">Lima</option>
+          </select>
+        </div>
+        <div>
+        <p>Distrito:</p>
+          <select name='DISTRITO' id='distrito'>
+          <option selected >Seleccione</option>
+          <?php while($reg=$this->distritos->fetch_object()):?>
+            <option value ='<?= $reg->District?>' ><?= $reg->NameUbigeo?></option>
+            <?php endwhile;?>
+          </select>
+        </div>
+      </div>
+    </div>   
+    <div class="control-group">
+      <label class="control-label" for="inputACTIVO">ACTIVO</label>
+        <div class="controls">
+            <input type='checkbox' id="inputACTIVO" name='ACTIVO' <?php if($this->usuario->State==1)echo "checked";?> >
+        </div>
+    </div>   
+    <div class="control-group">
+      <div class="controls">
+        <input type='submit' class="btn btn-primary pull-center" value='Grabar'>
+         <button type="reset" class="btn btn-primary pull-center" >Borrar</button>
+      </div>
+    </div>
+</fieldset> 
+    <div class="control-group camposobligatorios">
+      <p>*Campos Obligatorios</p>
+    </div> 
+</form>
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<br>
+<br>

@@ -1,0 +1,59 @@
+<legend>Detalle Bombero</legend>
+
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->bombero->idUser ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->bombero->Code?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->bombero->Name?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->bombero->LastName?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE DE USUARIO</th>
+		<td><?= $this->bombero->User?></td>
+	</tr>
+	<tr>
+		<th scope="row">EMAIL</th>
+		<td><?= $this->bombero->Email?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE REGISTRO</th>
+		<td><?= $this->bombero->RegistrationDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE MODIFICACIÓN</th>
+		<td><?= $this->bombero->UpdateDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">ESTADO</th>
+		<td><?=$this->bombero->State?'ACTIVO':'INACTIVO'?></td>
+	</tr>
+	<tr>
+		<th scope="row">CENTRAL</th>
+		<td><?=$this->bombero->UserType?></td>
+	</tr>	
+	<tr>
+		<th scope="row">ROL</th>
+		<td><?= $this->bombero->Role?> - <?= $this->bombero->DetailRole?></td>
+	</tr>
+	<tr>
+		<th scope="row">DEPARTAMENTO / PROVINCIA / DISTRITO</th>
+		<td><?= $this->bombero->Department?>-<?= $this->bombero->Province?>-<?= $this->bombero->District?></td>
+	</tr>
+</table>
+
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>bombero/editar/<?= $this->bombero->idUser ?>">EDITAR</a>
+<br>
+<br>

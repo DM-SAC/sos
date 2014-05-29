@@ -1,0 +1,59 @@
+<legend>Detalle Usuario</legend>
+
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->usuario->idUser ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->usuario->Code?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->usuario->Name?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->usuario->LastName?></td>
+	</tr>
+	<tr>
+		<th scope="row">USUARIO</th>
+		<td><?= $this->usuario->User?></td>
+	</tr>
+	<tr>
+		<th scope="row">EMAIL</th>
+		<td><?= $this->usuario->Email?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE REGISTRO</th>
+		<td><?= $this->usuario->RegistrationDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA DE MODIFICACIÓN</th>
+		<td><?= $this->usuario->UpdateDate?></td>
+	</tr>
+	<tr>
+		<th scope="row">ESTADO</th>
+		<td><?=$this->usuario->State?'ACTIVO':'INACTIVO'?></td>
+	</tr>
+	<tr>
+		<th scope="row">CENTRAL</th>
+		<td><?=$this->usuario->UserType?></td>
+	</tr>	
+	<tr>
+		<th scope="row">ROL</th>
+		<td><?= $this->usuario->Role?> - <?= $this->usuario->DetailRole?></td>
+	</tr>
+	<tr>
+		<th scope="row">DEPARTAMENTO / PROVINCIA / DISTRITO</th>
+		<td><?= $this->usuario->Department?>-<?= $this->usuario->Province?>-<?= $this->usuario->District?></td>
+	</tr>
+</table>
+
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>usuario/editar/<?= $this->usuario->idUser ?>">EDITAR</a>
+<br>
+<br>

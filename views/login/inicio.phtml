@@ -1,0 +1,24 @@
+<form id="login" action='<?= BASE_URL; ?>login/iniciar' method='post'>
+<input type="hidden" value="1" name="enviar" />
+<fieldset>
+<legend>Iniciar Sesión</legend>
+<div id="error"><p><?php if(isset($this->_error)) echo $this->_error;?></p></div>
+    <div class="control-group">
+        <label class="control-label" for="inputUSUARIO">USUARIO o EMAIL</label>
+            <div class="controls">
+                <input type="email" class="input-large"  id="inputUSUARIO" name='usuario' value="<?php if(isset($this->datos)) echo $this->datos['usuario']; ?>" />
+            </div>
+    </div>  
+    <div class="control-group">
+        <label class="control-label" for="inputCLAVE">CONTRASEÑA</label>
+            <div class="controls">
+                <input type="password" class="input-large"  id="inputCLAVE" name='clave'>
+            </div>
+    </div> 
+    <div class="control-group">
+           <div class="controls">
+           <input type='submit' value='ENTRAR' class="btn btn-primary pull-center" >
+           </div>
+  </div>
+</fieldset> 
+</form>

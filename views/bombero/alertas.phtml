@@ -1,0 +1,58 @@
+<h3>BUSCAR: <input type="search" value="" name="buscador" placeholder='Ingrese su búsqueda...'> </h3>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>bombero/nuevaAlerta"> Ingresar Nueva Alerta</a>
+<br>
+<br>
+<legend>Alertas</legend>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<!-- <th>CÓDIGO</th> -->
+			<th>FECHA</th>
+			<th>UBICACIÓN</th>
+			<th>NÚMERO</th>
+			<th>TIPO EMERGENCIA</th>
+			<th>UNIDAD</th>
+			<th>ESTADO</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->alertas->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idAlert?> </td>
+			<!-- <td> <?=$reg->Code?> </td> -->
+			<td> <?=$reg->Date?> </td>
+			<td> <?=$reg->Location?> </td>
+			<td> <a href="<?= BASE_URL; ?>bombero/app-user/<?=$reg->PhoneNumberCaller?>"> <?=($reg->PhoneNumber=='--')?$reg->PhoneNumberCaller:$reg->PhoneNumber?> </a></td>
+			<td> <?=$reg->AlertType?> </td>
+			<td> <?=$reg->Plate?> </td>
+			<td class="<?=$reg->State?>"> <?=$reg->State?></td>
+			<td>
+			<?php if($reg->idState=='1'):?>
+			<a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/atender/<?=$reg->idAlert?>">Atender</a> / 
+			<?php endif; ?>
+			<?php if($reg->idState=='2' && Session::get('distrito')!='TODOS' ):?>
+			<a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/atender/<?=$reg->idAlert?>">Atender</a> / 
+			<?php endif; ?>
+			<a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/detalleAlerta/<?=$reg->idAlert?>">Detalle</a>
+
+			</td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+<div class="pagination">
+	<ul>
+		<li><a href="<?= BASE_URL; ?>bombero/alertas/<?=$this->param['anterior']?>">Anterior</a></li>
+		<?php foreach ($this->param['rango'] as $pag):?>
+		<li class=<?=($this->param['actual']==$pag)?'active':''?>><a href="<?= BASE_URL; ?>bombero/alertas/<?=$pag?>"><?= $pag?></a></li>
+		<?php endforeach;?>	
+		<li><a href="<?= BASE_URL; ?>bombero/alertas/<?=$this->param['siguiente']?>">Siguiente</a></li>
+	</ul>
+</div>
+<br>
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<br>
+<br>

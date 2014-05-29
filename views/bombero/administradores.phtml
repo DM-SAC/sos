@@ -1,0 +1,43 @@
+<legend>Lista de Administradores</legend>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>CÓDIGO</th>
+			<th>NOMBRE</th>
+			<th>APELLIDOS</th>
+			<th>EMAIL</th>
+			<th>ESTADO</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->bomberos->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idUser?> </td>
+			<td> <?=$reg->Code?> </td>
+			<td> <?=$reg->Name?> </td>
+			<td> <?=$reg->LastName?> </td>
+			<td> <?=$reg->Email?> </td>
+			<td> <?=$reg->State?'ACTIVO':'INACTIVO'?> </td>
+			<td><a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/editar/<?=$reg->idUser?>">Editar</a> / <a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/borrar/<?=$reg->idUser?>" onclick="return confirmar()">Borrar</a>
+				/<a style="cursor:pointer" href="<?= BASE_URL; ?>bombero/detalle/<?=$reg->idUser?>">Detalle</a></td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+<div class="pagination">
+	<ul>
+		<li><a href="<?= BASE_URL; ?>bombero/administradores/<?=$this->param['anterior']?>">Anterior</a></li>
+		<?php foreach ($this->param['rango'] as $pag):?>
+		<li class=<?=($this->param['actual']==$pag)?'active':''?>><a href="<?= BASE_URL; ?>bombero/administradores/<?=$pag?>"><?= $pag?></a></li>
+		<?php endforeach;?>	
+		<li><a href="<?= BASE_URL; ?>bombero/administradores/<?=$this->param['siguiente']?>">Siguiente</a></li>
+	</ul>
+</div>
+<br>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>bombero/nuevo"> Ingresar Nuevo Administrador</a>
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<br>
+<br>
