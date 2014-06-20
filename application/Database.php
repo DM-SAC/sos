@@ -8,12 +8,10 @@ class Database extends mysqli
     }
     public function paginar($query, $pagina = false, $limite = false)
 	{
-		/*   Define el valor de la variable  */
 		if(!($limite && is_numeric($limite))){
 			$limite = LIMIT_REGXPAG;
 		}
 
-		/*  Define el inicio de la pagina */
 		if ($pagina && is_numeric($pagina)){
 			$inicio = ($pagina - 1) * $limite;
 		} else {
@@ -21,19 +19,13 @@ class Database extends mysqli
 			$inicio = 0;
 		}
 
-
-		/*  Consulta a la BD */
 		$result = $this->query($query);
 		$registros =  $result->num_rows;
 
-
-		/*  Define el total de paginas */
 		$total = ceil($registros / $limite);
 		
 		if ($pagina>$total) $pagina=$total;
 		
-		
-	/*  Define el inicio de la pagina */
 		if ($pagina && is_numeric($pagina)){
 			$inicio = ($pagina - 1) * $limite;
 		} else {
@@ -41,13 +33,9 @@ class Database extends mysqli
 			$inicio = 0;
 		}
 
-		/*  Consulta con limites  */
 		$query = $query . " LIMIT $inicio, $limite";
 		$result = $this->query($query);
 
-
-
-		/* Define las otras variables de la paginación */
 		$this->_paginacion['actual'] = $pagina;
 		$this->_paginacion['total'] = $total;
 
@@ -78,7 +66,6 @@ class Database extends mysqli
 			$rango_derecho = $pagina_seleccionada + $rango;
 		}
 
-
 		if ($total_paginas<LIMIT_PAGEVIEW) $rango_derecho = $total_paginas;
 
 		$rango_izquierdo = $pagina_seleccionada - ($rango-1);
@@ -86,7 +73,6 @@ class Database extends mysqli
 		if ($rango_izquierdo<=0) $rango_izquierdo=1;
 
 		$paginas = range($rango_izquierdo,$rango_derecho);
-	//	var_dump($paginas);
 
 		$this->_paginacion['rango'] = $paginas;
 

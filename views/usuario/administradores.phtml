@@ -1,0 +1,47 @@
+<legend>Lista de Administradores</legend>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>CÓDIGO</th>
+			<th>NOMBRE</th>
+			<th>APELLIDOS</th>
+			<th>EMAIL</th>
+			<th>ESTADO</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->usuarios->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idUser?> </td>
+			<td> <?=$reg->Code?> </td>
+			<td> <?=$reg->Name?> </td>
+			<td> <?=$reg->LastName?> </td>
+			<td> <?=$reg->Email?> </td>
+			<td> <?=$reg->State?'ACTIVO':'INACTIVO'?> </td>
+			<td><a style="cursor:pointer" href="<?= BASE_URL; ?>usuario/editar/<?=$reg->idUser?>"><img src="<?= $_layoutParams['ruta_img']?>Editar.png" alt="Editar" title="Editar" class="opciones"></a> <a style="cursor:pointer" href="<?= BASE_URL; ?>usuario/borrar/<?=$reg->idUser?>" onclick="return confirmar()"><img src="<?= $_layoutParams['ruta_img']?>Borrar.png" class="opciones"alt="Borrar" title="Borrar"/></a> <a style="cursor:pointer" href="<?= BASE_URL; ?>usuario/detalle/<?=$reg->idUser?>"><img src="<?= $_layoutParams['ruta_img']?>Detalle.png" class="opciones"alt="Detalle" title="Detalle"/></a></td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+<div class="pagination">
+	<ul>
+		<li><a href="<?= BASE_URL; ?>usuario/administradores/<?=$this->param['anterior']?>">Anterior</a></li>
+		<?php foreach ($this->param['rango'] as $pag):?>
+		<li class=<?=($this->param['actual']==$pag)?'active':''?>><a href="<?= BASE_URL; ?>usuario/administradores/<?=$pag?>"><?= $pag?></a></li>
+		<?php endforeach;?>	
+		<li><a href="<?= BASE_URL; ?>usuario/administradores/<?=$this->param['siguiente']?>">Siguiente</a></li>
+	</ul>
+</div>
+<br>
+<figure class="inline" style="text-align:center;">
+  <a href="<?= BASE_URL; ?>usuario/nuevo"><img title="Ingresar Nuevo Supervisor" src="<?= $_layoutParams['ruta_img']?>Nuevo.png" class="botones" alt="Nuevo"></a>
+  <figcaption><label>NUEVO USUARIO</label></figcaption>
+</figure>
+
+<figure class="inline"style="text-align:center;">
+  <a class="botones" href="javascript:history.back(1)"><img title="Volver" src="<?= $_layoutParams['ruta_img']?>Volver.png" class="botones" alt='Volver'></a>
+  <figcaption><label>VOLVER A ATRÁS</label></figcaption>
+</figure>

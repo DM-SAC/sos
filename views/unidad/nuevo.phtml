@@ -1,0 +1,44 @@
+<form id="usuario" class="form-horizontal hero-unit formulario" action='<?= BASE_URL; ?>unidad/ingresar' method='post'>
+  <fieldset>
+  <legend>Ingresar Nueva Unidad</legend>
+<div class="inline">
+    <div class="control-group">
+      <label class="control-label" for="inputNOMBRE">NOMBRE *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputNOMBRE" name='NOMBRE' required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputAPELLIDOS">APELLIDOS *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputAPELLIDOS" name='APELLIDOS' required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputPLACA">PLACA *</label>
+      <div class="controls">
+        <input type="text" class="input-mini"  id="inputPLACA" name='PLACA' required>
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label" for="inputACTIVO">ACTIVO</label>
+      <div class="controls">
+        <input type='checkbox' id="inputACTIVO" name='ACTIVO'>
+      </div>
+    </div> 
+    <div class="control-group camposobligatorios">
+      <p>*Campos Obligatorios</p>
+    </div> 
+      </div>
+      <div class="opciones-form">
+      <figure style="text-align:center;">
+      <input type='image' title="Guardar" src="<?= $_layoutParams['ruta_img']?>Guardar.png" class="botones" value='Grabar'>
+      <figcaption><label>INGRESAR</label></figcaption>
+      </figure>
+      <figure style="text-align:center;">
+      <a class="botones" href="javascript:history.back(1)"><img title="Volver" src="<?= $_layoutParams['ruta_img']?>Volver.png" class="botones" alt='Volver'></a>
+      <figcaption><label>VOLVER A ATRÁS</label></figcaption>
+      </figure>
+    </div>
+</fieldset> 
+</form>

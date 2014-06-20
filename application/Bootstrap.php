@@ -4,8 +4,8 @@ class Bootstrap
 {
     public static function run(Request $peticion)
     {
-        $controller = $peticion->getControlador() . 'Controller';   //  ejem:  indexController o postController
-        $rutaControlador = ROOT . 'controllers' . DS . $controller . '.php';  // ejem:  .../controllers/indexController.php
+        $controller = $peticion->getControlador() . 'Controller';
+        $rutaControlador = ROOT . 'controllers' . DS . $controller . '.php';
         $metodo = $peticion->getMetodo();
         $args = $peticion->getArgs();
         

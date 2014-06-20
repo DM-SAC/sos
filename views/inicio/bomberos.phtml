@@ -1,0 +1,20 @@
+<legend><h2>Departamento de Bomberos</h2></legend>
+<br>
+<div class="hero-unit">
+	<div class="datos">
+		<ul>
+			<li><a href="<?= BASE_URL; ?>usuario/administradores">ADMINISTRADORES</a></li>
+			<li><a href="<?= BASE_URL; ?>usuario/supervisores">SUPERVISORES</a></li>
+			<li><a href="<?= BASE_URL; ?>unidad/unidades">UNIDADES</a></li>
+			<li><a href="<?= BASE_URL; ?>usuario/nuevo">INGRESAR NUEVO USUARIO</a></li>
+			<?php if( (Session::get('idDistrito'))!='0' || (Session::get('tipoId'))=='1'):?>
+			<li><a href="<?= BASE_URL; ?>unidad/nueva">INGRESAR NUEVA UNIDAD</a></li>
+			<?php endif; ?>
+		</ul>		
+	</div>
+	<div class="foto">
+		<img src="<?= $_layoutParams['ruta_img']?>bombero.png" height="200px" width="180px" alt="Escudo de Bombero">
+	</div>
+		
+</div>
+<br>

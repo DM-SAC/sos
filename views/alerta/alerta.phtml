@@ -1,0 +1,99 @@
+<legend>Detalle Alerta</legend>
+<h3>USUARIO APP</h3>
+<br>
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= ($this->alerta->idAppUser=='1')?"SÓLO LLAMADA":$this->alerta->idAppUser; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->alerta->NameUser?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->alerta->LastNameUser?></td>
+	</tr>
+	<tr>
+		<th scope="row">NÚMERO</th>
+		<td><?= $this->alerta->PhoneNumber?></td>
+	</tr>
+	<tr>
+		<th scope="row">DNI</th>
+		<td><?= $this->alerta->Document?></td>
+	</tr>
+</table>
+<h3>UNIDAD APP</h3>
+<br>
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= ($this->alerta->idAppUnit=='1')?"NO ASIGNADO":$this->alerta->idAppUnit; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->alerta->CodeUnit?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->alerta->NameUnit?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->alerta->LastNameUnit?></td>
+	</tr>
+	<tr>
+		<th scope="row">PLACA</th>
+		<td><?= $this->alerta->Plate?></td>
+	</tr>
+	<tr>
+		<th scope="row">LICENCIA DE USO</th>
+		<td><?= $this->alerta->License_idLicense?></td>
+	</tr>
+</table>
+<h3>ALERTA</h3>
+<br>
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->alerta->idAlert ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->alerta->Code?></td>
+	</tr>
+	<tr>
+		<th scope="row">FECHA</th>
+		<td><?= $this->alerta->Date?></td>
+	</tr>
+	<tr>
+		<th scope="row">UBICACIÓN</th>
+		<td><?= $this->alerta->Location?></td>
+	</tr>
+	<tr>
+		<th scope="row">TIPO DE ALERTA</th>
+		<td><?= $this->alerta->AlertType?></td>
+	</tr>
+	<tr>
+		<th scope="row">DETALLE DE ALERTA</th>
+		<td><?= $this->alerta->AlertDetail?></td>
+	</tr>
+	<tr>
+		<th scope="row">NUMERO DE LLAMADA</th>
+		<td><?= $this->alerta->PhoneNumberCaller?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->alerta->NameCaller?></td>
+	</tr>
+</table>
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">REGRESAR</a>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>alerta/editar/<?= $this->alerta->idAlert ?>">EDITAR</a>
+<br>
+<br>

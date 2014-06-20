@@ -87,7 +87,8 @@ abstract class Controller
             return $_POST[$clave];
         }
     }
-        protected function getSql($clave)
+
+    protected function getSql($clave)
     {
         if(isset($_POST[$clave]) && !empty($_POST[$clave])){
             $_POST[$clave] = strip_tags($_POST[$clave]);

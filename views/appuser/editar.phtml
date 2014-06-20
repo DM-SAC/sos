@@ -1,0 +1,51 @@
+<form id="usuario" class="form-horizontal formulario hero-unit" action='<?= BASE_URL; ?>appuser/ingresar' method='post'>
+  <fieldset>
+  <legend>Editar Usuario de la Aplicación</legend>
+<div class="inline">
+       <input type="hidden" class="input-small"  id="inputID" name='ID' value ='<?= $this->appuser->idAppUser ?>' readonly>
+    <div class="control-group">
+      <label class="control-label" for="inputNOMBRE">NOMBRE *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputNOMBRE" name='NOMBRE' value ='<?= $this->appuser->NameUser ?>' required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputAPELLIDOS">APELLIDOS *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputAPELLIDOS" name='APELLIDOS' value ='<?= $this->appuser->LastNameUser ?>' required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputNUMERO">NÚMERO *</label>
+      <div class="controls">
+        <input type="number" min='1' max='999999999'class="input-small"  id="inputNUMERO" name='NUMERO' value ='<?= $this->appuser->PhoneNumber ?>' required>
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label" for="inputDNI">DNI *</label>
+      <div class="controls">
+      <input type="number" min='1' max='99999999'class="input-small"  id="inputDNI" name='DNI' value ='<?= $this->appuser->Document ?>' required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputPRIORIDAD">PRIORIDAD *</label>
+      <div class="controls">
+      <input type="number" min='0' max='5'class="input-mini"  id="inputPRIORIDAD" name='PRIORIDAD' value ='<?= $this->appuser->Priority ?>' required>
+      </div>
+    </div>
+    <div class="camposobligatorios">
+      <p>*Campos Obligatorios</p>
+    </div> 
+    </div>
+<div class="opciones-form">
+      <figure style="text-align:center;">
+      <input type='image' title="Guardar" src="<?= $_layoutParams['ruta_img']?>Guardar.png" class="botones" value='Grabar'>
+      <figcaption><label>ACTUALIZAR</label></figcaption>
+      </figure>
+      <figure style="text-align:center;">
+      <a class="botones" href="javascript:history.back(1)"><img title="Volver" src="<?= $_layoutParams['ruta_img']?>Volver.png" class="botones" alt='Volver'></a>
+      <figcaption><label>&laquo; VOLVER</label></figcaption>
+      </figure>
+</div>
+</fieldset> 
+</form>

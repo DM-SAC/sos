@@ -1,0 +1,26 @@
+<br>
+<div class="lform">
+  <form class="center" id="login" action='<?= BASE_URL; ?>login/iniciar' method='post'>
+  <input type="hidden" value="1" name="enviar" />
+  <fieldset>
+  <legend class="center">INICIAR SESIÓN</legend>
+  <br>
+  <div class="error"><p class="er"><?php if(isset($this->_error)) echo $this->_error;?></p></div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="email" class="input-large"  id="inputUSUARIO" name='usuario' value="<?php if(isset($this->datos)) echo $this->datos['usuario']; ?>" placeholder="Ingresar e-mail"/>
+      </div>
+    </div>  
+    <div class="control-group">
+      <div class="controls">
+        <input type="password" class="input-large"  id="inputCLAVE" name='clave' placeholder="Ingresar contraseña">
+      </div>
+    </div> 
+    <div class="submit">
+      <input type="submit" value="INICIAR SESIÓN" id="button-blue">
+      <div class="ease"></div>
+    </div>
+  </fieldset> 
+  </form>
+</div>
+<br>

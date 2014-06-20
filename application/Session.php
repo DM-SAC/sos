@@ -1,6 +1,5 @@
 <?php
 
-
 class Session
 {
     public static function init()
@@ -136,5 +135,4 @@ class Session
     }
     
 }
-
 ?>

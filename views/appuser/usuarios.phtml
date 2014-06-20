@@ -1,0 +1,47 @@
+<legend>Usuarios de la Aplicación</legend>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>NOMBRE</th>
+			<th>APELLIDOS</th>
+			<th>N° MÓVIL</th>
+			<th>DNI</th>
+			<th>PRIORIDAD</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->appuser->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idAppUser?> </td>
+			<td> <?=$reg->NameUser?> </td>
+			<td> <?=$reg->LastNameUser?> </td>
+			<td> <?=$reg->PhoneNumber?> </td>
+			<td> <?=$reg->Document?> </td>
+			<td> <?=$reg->Priority?> </td>
+			
+			<td>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>appuser/editar/<?=$reg->idAppUser?>"><img src="<?= $_layoutParams['ruta_img']?>Editar.png" alt="Editar" title="Editar" class="opciones"></a>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>appuser/bloquear/<?=$reg->idAppUser?>" onclick="return confirmar()"><img src="<?= $_layoutParams['ruta_img']?>Bloquear.png" alt="Bloquear" title="Bloquear" class="opciones"></a>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>appuser/detalle/<?=$reg->idAppUser?>"><img src="<?= $_layoutParams['ruta_img']?>Detalle.png" class="opciones"alt="Detalle" title="Detalle"/></a>
+			</td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+<div class="pagination">
+	<ul>
+		<li><a href="<?= BASE_URL; ?>appuser/usuarios/<?=$this->param['anterior']?>">Anterior</a></li>
+		<?php foreach ($this->param['rango'] as $pag):?>
+		<li class=<?=($this->param['actual']==$pag)?'active':''?>><a href="<?= BASE_URL; ?>appuser/usuarios/<?=$pag?>"><?= $pag?></a></li>
+		<?php endforeach;?>	
+		<li><a href="<?= BASE_URL; ?>appuser/usuarios/<?=$this->param['siguiente']?>">Siguiente</a></li>
+	</ul>
+</div>
+<br>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>appuser/nuevo"> Ingresar Nuevo Usuario</a>
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)"> &laquo; REGRESAR</a>
+<br>
+<br>

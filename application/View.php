@@ -13,13 +13,64 @@ class View
 	public function renderizar($vista, $item = false)
 	{
 		
-		 // $menu = array(
-   //          array(
-   //              'id' => 'inicio',
-   //              'titulo' => 'Inicio',
-   //              'enlace' => BASE_URL
-   //              ),
-   //      );
+		if(Session::get('autenticado')){
+		$menu = array(
+
+            array(
+                'id' => 'inicio',
+                'titulo' => "INICIO",
+                'enlace' => BASE_URL
+                )
+        );
+
+	        if(Session::get('tipoId')=='1'){
+	            $menu[] = array(
+	                'id' => 'bombero',
+	                'titulo' => 'BOMBEROS',
+	                'enlace' => BASE_URL . 'inicio/bomberos'
+	                );
+	            $menu[] = array(
+	               	'id' => 'policia',
+	                'titulo' => 'POLICÍAS',
+	                'enlace' => BASE_URL.'inicio/policias'
+	                );
+	            $menu[] = array(
+	               	'id' => 'appuser',
+	                'titulo' => 'APLICACIÓN',
+	                'enlace' => BASE_URL.'appuser'
+	                );
+	        }else{
+	        		$menu[] = array(
+	                'id' => 'alertas',
+	                'titulo' => 'ALERTAS',
+	                'enlace' => BASE_URL . 'alerta'
+	                );
+	                if (Session::get('rol')=='Administrador') {
+		        		if (Session::get('tipoId')=='2') {
+		        		$menu[] = array(
+		                'id' => 'bombero',
+		                'titulo' => 'BOMBEROS',
+		                'enlace' => BASE_URL . 'inicio/bomberos'
+		                );
+		        			# code...
+		        		}
+		        		if(Session::get('tipoId')=='3'){
+		        		$menu[] = array(
+		                'id' => 'policia',
+		                'titulo' => 'POLICÍAS',
+		                'enlace' => BASE_URL . 'inicio/policias'
+		                );	
+		        		}
+	                }
+	        }
+	        $menu[] = array(
+	            'id' => 'cuenta',
+                'titulo' => 'MI CUENTA',
+                'enlace' => BASE_URL.'usuario/cuenta'
+	        );
+        }else{
+        	$menu= array();
+        }
 
 	    $js = array();
 
@@ -31,15 +82,14 @@ class View
 	      'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
 	      'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
 	      'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
-	      'js' => $js
-	      // ,
-	      // 'menu' => $menu
+	      'js' => $js,
+	      'menu' => $menu
 	    );
 
 	    $rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
 	 
 	    if(is_readable($rutaView)){
-			if (!$item) {
+			if ($item!='true') {
 				include_once ROOT . 'views'. DS . 'layout' . DS . DEFAULT_LAYOUT . DS . 'header.php';
 				include_once $rutaView;
 				include_once ROOT . 'views'. DS . 'layout' . DS . DEFAULT_LAYOUT . DS . 'footer.php';
@@ -51,13 +101,10 @@ class View
 			throw new Exception('Error de vista.');
 		}
 
-}
-	/*
-	 *  carga los js  especificos del controlador
-	 *
-	 */
-public function setJsPlugin(array $js)
-    {
+	}
+
+	public function setJsPlugin(array $js)
+	    {
         if(is_array($js) && count($js)){
             for($i=0; $i < count($js); $i++){
                 $this->_jsPlugin[] = BASE_URL . 'public/js/' .  $js[$i] . '.js';
@@ -77,7 +124,5 @@ public function setJsPlugin(array $js)
 			throw new Exception('Error de js');
 		}
 	}
-
 }
-
 ?>

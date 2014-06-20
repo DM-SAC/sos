@@ -1,0 +1,47 @@
+<legend>Detalle de la Unidad</legend>
+
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->unidad->idAppUnit ?></td>
+	</tr>
+	<tr>
+		<th scope="row">CÓDIGO</th>
+		<td><?= $this->unidad->CodeUnit ?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->unidad->NameUnit?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->unidad->LastNameUnit?></td>
+	</tr>
+	<tr>
+		<th scope="row">PLACA</th>
+		<td><?= $this->unidad->Plate?></td>
+	</tr>
+	<tr>
+		<th scope="row">LICENCIA</th>
+		<td><?= $this->unidad->License_idLicense?></td>
+	</tr>
+<!-- 	<tr>
+		<th scope="row">DEPARTAMENTO / PROVINCIA / DISTRITO</th>
+		<td><?= $this->unidad->Department?>-<?= $this->unidad->Province?>-<?= $this->unidad->District?></td>
+	</tr> -->
+	<tr>
+		<th scope="row">ESTADO</th>
+		<td><?= $this->unidad->StateUnit?'ACTIVO':'INACTIVO'?></td>
+	</tr>
+</table>
+
+<figure class="inline"style="text-align:center;">
+	<a href="estadistica"><img class="botones" src="<?= $_layoutParams['ruta_img']?>Volver.png" alt="Volver" title='Volver'/></a>
+	<figcaption><label>VOLVER</label></figcaption>
+</figure>
+<figure class="inline"style="text-align:center;">
+	<a href="<?= BASE_URL?>unidad/editar/<?= $this->unidad->idAppUnit ?>"><img class="botones"src="<?= $_layoutParams['ruta_img']?>Editar.png" alt="editar Unidad" title='Editar Unidad'/></a>
+	<figcaption><label>EDITAR</label></figcaption>
+</figure>	

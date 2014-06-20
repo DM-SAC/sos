@@ -1,0 +1,49 @@
+<legend>Lista de Unidades</legend>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>NOMBRE</th>
+			<th>APELLIDOS</th>
+			<th>PLACA</th>
+			<th>ESTADO</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->unidades->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idAppUnit?> </td>
+			<td> <?=$reg->NameUnit?> </td>
+			<td> <?=$reg->LastNameUnit?> </td>
+			<td> <?=$reg->Plate?> </td>
+			<td> <?=$reg->StateUnit?'ACTIVO':'INACTIVO'?> </td>
+			
+			<td>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>unidad/editar/<?=$reg->idAppUnit?>"><img src="<?= $_layoutParams['ruta_img']?>Editar.png" alt="Editar" title="Editar" class="opciones"></a>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>unidad/bloquear/<?=$reg->idAppUnit?>" onclick="return confirmar()"><img src="<?= $_layoutParams['ruta_img']?>Bloquear.png" alt="Bloquear" title="Bloquear" class="opciones"></a>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>unidad/detalle/<?=$reg->idAppUnit?>"><img src="<?= $_layoutParams['ruta_img']?>Detalle.png" class="opciones"alt="Detalle" title="Detalle"/></a>
+			</td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+<div class="pagination">
+	<ul>
+		<li><a href="<?= BASE_URL; ?>unidad/unidades/<?=$this->param['anterior']?>">Anterior</a></li>
+		<?php foreach ($this->param['rango'] as $pag):?>
+		<li class=<?=($this->param['actual']==$pag)?'active':''?>><a href="<?= BASE_URL; ?>unidad/unidades/<?=$pag?>"><?= $pag?></a></li>
+		<?php endforeach;?>	
+		<li><a href="<?= BASE_URL; ?>unidad/unidades/<?=$this->param['siguiente']?>">Siguiente</a></li>
+	</ul>
+</div>
+<figure class="inline" style="text-align:center;">
+      <a href="<?= BASE_URL; ?>unidad/nueva"><img title="Ingresar Nueva Unidad" src="<?= $_layoutParams['ruta_img']?>Nuevo.png" class="botones" alt="Nuevo"></a>
+      <figcaption><label>NUEVA UNIDAD</label></figcaption>
+      </figure>
+
+      <figure class="inline"style="text-align:center;">
+      <a class="botones" href="javascript:history.back(1)"><img title="Volver" src="<?= $_layoutParams['ruta_img']?>Volver.png" class="botones" alt='Volver'></a>
+      <figcaption><label>VOLVER A ATRÁS</label></figcaption>
+      </figure>

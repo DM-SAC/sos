@@ -1,0 +1,66 @@
+<legend>Alertas <?=Session::get('UABD').'-'.Session::get('UAM')?></legend>
+<form action="<?= BASE_URL; ?>alerta/alertas" method="post">
+<div class="span4 logo">
+  <div class="row">
+    <div class="span1">
+      <img src="<?= $_layoutParams['ruta_img']?>Buscar.png" heigth="58" width="58" alt="Logo" title='Buscar Número'/>
+    </div>
+    <div class="span3">
+	<strong><p>Ingresar Número</p></strong>
+    </div>
+        <div class="span3">
+	<input id="buscar" type="text" value="<?= isset($this->buscar)?$this->buscar:'' ?>" name="buscar" placeholder='Ingrese su búsqueda...' autofocus/>
+    </div>
+  </div> 
+</div>  
+    <div class="span3">
+	<a href="<?= BASE_URL; ?>alerta/nueva"><img src="<?= $_layoutParams['ruta_img']?>Nuevo.png" heigth="58" width="58" alt="Nueva Alerta" title='Ingresar Nueva Alerta'/></a>
+    </div>    
+</form>
+<form action="<?= BASE_URL; ?>alerta/alertas" method="post">
+<input type="hidden" id="ultimo" name="ultimo" value="<?=$this->ultimo?>">
+</form>
+<div id="resultado">
+<legend>Alertas Recibidas (<?=Session::get('numero')?>)</legend>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<!-- <th>CÓDIGO</th> -->
+			<th>FECHA</th>
+			<th>UBICACIÓN</th>
+			<th>NÚMERO</th>
+			<th>EMERGENCIA</th>
+			<th>UNIDAD</th>
+			<th>ESTADO</th>
+			<th>OPCIONES</th>		
+		</tr>
+	</thead>
+	<tbody>
+		<?php while ($reg = $this->alertas->fetch_object()): ?>
+		<tr>
+			<td> <?=$reg->idAlert?> </td>
+			<!-- <td> <?=$reg->Code?> </td> -->
+			<td> <?=$reg->Date?> </td>
+			<td> <?=$reg->Location?> </td>
+			<td> <a href="<?= BASE_URL; ?>app-user/<?=$reg->PhoneNumberCaller?>"> <?=($reg->PhoneNumber=='--')?$reg->PhoneNumberCaller:$reg->PhoneNumber?> </a></td>
+			<td> <?=$reg->AlertType?> </td>
+			<td> <?=$reg->Plate?> </td>
+			<td class="<?=$reg->State?>"> <?=$reg->State?></td>
+			<td>
+				<?php if($reg->idState=='1'):?>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>alerta/atender/<?=$reg->idAlert?>"><img src="<?= $_layoutParams['ruta_img']?>Atender.png" class="opciones"alt="Atender" title="Atender"/></a>  
+				<?php endif; ?>
+				<?php if($reg->idState=='2' && Session::get('distrito')!='TODOS' ):?>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>alerta/atender/<?=$reg->idAlert?>"><img src="<?= $_layoutParams['ruta_img']?>Atender.png" class="opciones"alt="Atender" title="Atender"/></a> 
+				<?php endif; ?>
+				<a style="cursor:pointer" href="<?= BASE_URL; ?>alerta/detalle/<?=$reg->idAlert?>"><img src="<?= $_layoutParams['ruta_img']?>Detalle.png" class="opciones"alt="Detalle" title="Detalle"/></a>
+			</td>
+		</tr>
+		<?php endwhile;?>
+	</tbody>
+</table>
+
+<br>
+<br>
+</div>

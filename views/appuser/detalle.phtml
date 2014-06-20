@@ -1,0 +1,35 @@
+<legend>Detalle del Usuario de la Aplicación</legend>
+
+<table class="table table-bordered table-striped">
+	<col style="width: 200px" />
+	<col style="width: 100px" span="3" />
+	<tr>
+		<th scope="row">ID</th>
+		<td><?= $this->appuser->idAppUser ?></td>
+	</tr>
+	<tr>
+		<th scope="row">NOMBRE</th>
+		<td><?= $this->appuser->NameUser?></td>
+	</tr>
+	<tr>
+		<th scope="row">APELLIDOS</th>
+		<td><?= $this->appuser->LastNameUser?></td>
+	</tr>
+	<tr>
+		<th scope="row">NÚMERO</th>
+		<td><?= $this->appuser->PhoneNumber?></td>
+	</tr>
+	<tr>
+		<th scope="row">DNI</th>
+		<td><?= $this->appuser->Document?></td>
+	</tr>
+	<tr>
+		<th scope="row">PRIORIDAD</th>
+		<td><?= $this->appuser->Priority?></td>
+	</tr>
+</table>
+
+<a class="btn btn-primary pull-center" href="javascript:history.back(1)">&laquo; REGRESAR</a>
+<a class="btn btn-primary pull-center" href="<?= BASE_URL; ?>appuser/editar/<?= $this->appuser->idAppUser ?>">EDITAR</a>
+<br>
+<br>

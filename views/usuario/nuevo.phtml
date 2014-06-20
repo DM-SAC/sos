@@ -1,0 +1,100 @@
+<form id="usuario" class="form-horizontal formulario hero-unit" action='<?= BASE_URL; ?>usuario/ingresar' method='post'>
+  <fieldset>
+  <legend>Ingresar Nuevo Usuario</legend>
+  <div class="inline">
+    <div class="control-group">
+      <label class="control-label" for="inputNOMBRE">NOMBRE *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputNOMBRE" name='NOMBRE' required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputAPELLIDOS">APELLIDOS *</label>
+      <div class="controls">
+        <input type="text" class="input-large"  id="inputAPELLIDOS" name='APELLIDOS' required>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="EMAIL">EMAIL *</label>
+      <div class="controls">
+        <input type="email" class="input-large"  id="EMAIL" name='EMAIL' required>
+        <div id="info"></div>
+      </div>
+    </div>    
+    <div class="control-group">
+      <label class="control-label" for="inputROL">ROL</label>
+      <div class="controls">
+        <select name="ROL" required>
+          <option value="" selected>Seleccione</option>
+          <option value="2">Administrador</option>
+          <option value="3">Supervisor</option>s
+        </select>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputACTIVO">ACTIVO</label>
+      <div class="controls">
+        <input type='checkbox' id="inputACTIVO" name='ACTIVO'>
+      </div>
+    </div>  
+  
+    <?php if(Session::get('tipoId')=='1'):?>
+    <div class="control-group">
+      <label class="control-label" for="inputROL">TIPO</label>
+      <div class="controls">
+        <select name="TIPO" required>
+          <option selected >Seleccione</option>
+          <option value="2">Bombero</option>
+          <option value="3">Policía</option>s
+        </select>
+      </div>
+    </div> 
+    <div class="control-group">
+      <label class="control-label" for="inputUBICACION">UBICACION</label>
+      <br>
+      <div class="controls">
+        <div>
+        <p>Departamento:</p>
+          <select name='DEPARTAMENTO' id='departamento' readonly>
+            <option selected value='15'>Lima</option>
+            
+          </select>
+        </div>
+        <div>
+        <p>Provincia:</p>
+          <select name='PROVINCIA' id='provincia' readonly> 
+          <option selected value='01'>Lima</option>
+          </select>
+        </div>
+        <div>
+        <p>Distrito:</p>
+          <select size='5'name='DISTRITO' id='distrito'>
+          <?php while($reg=$this->distritos->fetch_object()):?>
+            <option value ='<?= $reg->District?>' ><?= $reg->NameUbigeo?></option>
+            <?php endwhile;?>
+          </select>
+        </div>
+      </div>
+    </div>    
+    <?php endif;?>
+    
+    <div class="control-group camposobligatorios">
+      <p>*Campos Obligatorios</p>
+    </div> 
+    </div>
+<div class="opciones-form">
+  <figure style="text-align:center;">
+  <input type='image' title="Guardar Campos" src="<?= $_layoutParams['ruta_img']?>Guardar.png" class="botones" value='Grabar'>
+  <figcaption><label>INGRESAR</label></figcaption>
+  </figure>
+  <figure style="text-align:center;">
+  <a href="javascript:document.getElementById('usuario').reset();"><img title="Limpiar" src="<?= $_layoutParams['ruta_img']?>Limpiar.png" class="botones" alt='Limpiar'></a>
+  <figcaption><label>LIMPIAR CAMPOS</label></figcaption>
+  </figure>
+  <figure style="text-align:center;">
+  <a class="botones" href="javascript:history.back(1)"><img title="Volver" src="<?= $_layoutParams['ruta_img']?>Volver.png" class="botones" alt='Volver'></a>
+  <figcaption><label>VOLVER A ATRÁS</label></figcaption>
+  </figure>
+</div>
+</fieldset> 
+</form>  

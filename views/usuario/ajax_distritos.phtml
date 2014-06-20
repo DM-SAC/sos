@@ -1,0 +1,4 @@
+<option value='0' selected>Seleccione</option>
+<?php while($reg=$this->distritos->fetch_object()):?>
+		<option value ='<?= $reg->District ?>' ><?= $reg->NameUbigeo?></option>
+<?php endwhile;?>

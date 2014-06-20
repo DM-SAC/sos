@@ -1,0 +1,15 @@
+<legend><h2>Bienvenido </h2></legend>
+<br>
+<div class="hero-unit">
+	<div class="datos">
+		 <p><strong>NOMBRES : </strong><?=Session::get('usuario')?> <?=Session::get('apellidos')?></p>
+		<p><strong>PUESTO : </strong><?=Session::get('tipo')?></p>
+		<p><strong>ROL : </strong><?=Session::get('rol')?></p>
+		<p><strong>DISTRITO : </strong><?=Session::get('distrito')?></p>
+	</div>
+	<div class="foto">
+		<a href="<?= BASE_URL;?>usuario/detalle/<?=Session::get('id')?>"><img src="<?= $_layoutParams['ruta_img']?>Profile.png" height="150px" width="150px" alt="usuario"></a>
+	</div>
+		
+</div>
+<br>
